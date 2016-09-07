@@ -1,0 +1,19 @@
+{{template "partials/head.html" .}}
+{{template "partials/nav.html" .}}
+<div class="container">
+  {{range .Articles}}
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>{{.Title}}</h1>
+      <h6 class="text-muted">
+        {{.CreatedTime}}&nbsp;
+        <span class="label label-info">Views {{.Views}}</span>&nbsp;
+        <span class="label label-danger">Replied {{.RepliedCount}}</span>
+      </h6>
+      <p>{{.Content}}</p>
+      <hr>
+    </div>
+  </div>
+  {{end}}
+</div>
+{{template "partials/foot.html" .}}

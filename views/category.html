@@ -1,0 +1,54 @@
+{{template "partials/head.html" .}}
+{{template "partials/nav.html" .}}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Category List</h1>
+      <hr>
+      <form action="/category/add" method="post" class="form-inline">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Category Name" name="name">
+        </div>
+        <button type="submit" class="btn btn-default">&nbsp;
+          <i class="glyphicon glyphicon-plus"></i>&nbsp;
+        </button>
+      </form>
+      <table class="table table-striped table-hover">
+        <thead>
+          <th>ID</th>
+          <th>Name</th>
+          <th>Article Count</th>
+          <th>Created Time</th>
+          <th></th>
+        </thead>
+        <tbody>
+          {{range .Categories}}
+            <tr>
+              <td>{{.Id}}</td>
+              <td>{{.Title}}</td>
+              <td>{{.ArticleCount}}</td>
+              <td>{{.CreatedTime}}</td>
+              <td>
+                <button data-action="del" class="btn btn-danger" data-id="{{.Id}}">
+                  <i class="glyphicon glyphicon-trash"></i>
+                </button>
+              </td>
+            </tr>
+          {{end}}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<script>
+  $(function () {
+    $('[data-action="del"]').click(function () {
+      var dom = $(this);
+      $.post('/category/del', {id: dom.data('id')}).then(function () {
+        dom.closest('tr').remove();
+      });
+    });
+  });
+</script>
+{{template "partials/foot.html" .}}

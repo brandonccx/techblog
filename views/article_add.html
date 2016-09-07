@@ -1,0 +1,28 @@
+{{template "partials/head.html" .}}
+{{template "partials/nav.html" .}}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12">
+      <h1>Add Article</h1>
+      <a href="/article" class="btn btn-info pull-right">
+        Back
+      </a>
+      <div class="clearfix"></div>
+      <hr>
+      <form action="/article" method="post">
+        <div class="form-group">
+          <label for="">Title</label>
+          <input type="text" name="title" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="">Content</label>
+          <textarea type="text" name="content" cols="30" rows="10" class="form-control"></textarea>
+        </div>
+        <div class="form-group">
+          <button type="submit" class="btn btn-success">Submit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{{template "partials/foot.html" .}}

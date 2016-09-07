@@ -1,0 +1,4 @@
+/data/*.db
+/lab/
+*.exe
+*.exe~

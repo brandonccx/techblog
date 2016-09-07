@@ -1,0 +1,45 @@
+{{template "partials/head.html" .}}
+<div class="container">
+    <br>
+    <br>
+    <br>
+    <div class="row">
+      <div class="col-xs-6 col-xs-offset-3">
+        <form class="horizontal" action="/login" method="post">
+          <div class="form-group">
+            <label for="">Account</label>
+            <input class="form-control" type="text" name="Account" />
+          </div>
+          <div class="form-group">
+            <label for="">Password</label>
+            <input class="form-control" type="text" name="Password" />
+          </div>
+          <div class="form-group">
+            <label>
+              <input type="checkbox" name="AutoLogin" />
+              Remember Me
+            </label>
+          </div>
+          <a class="btn btn-default" href="/">Back</a>
+          <button class="btn btn-info" type="submit">Login</button>
+        </form>
+      </div>
+    </div>
+</div>
+
+<script>
+  (function () {
+    $('form').submit(function () {
+      var flag = false;
+      $.each($(this).serializeArray(), function () {
+        if (this.value === '') {
+          flag = true;
+        }
+      });
+      if (flag) {
+        return false;
+      }
+    });
+  })()
+</script>
+{{template "partials/foot.html" .}}
